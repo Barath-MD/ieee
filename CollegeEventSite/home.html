@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>College Event - home</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        /* General Page Styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            font-family: Arial, sans-serif;
+        }
+
+        /* Video Background */
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Overlay Content */
+        .overlay {
+            position: absolute;
+            top: 55%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            background: rgba(0, 0, 0, 0);
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Typewriter Effect with Loop */
+        .typewriter h3 {
+            overflow: hidden;
+            white-space: nowrap;
+            border-right: 3px solid white;
+            width: 0;
+            display: inline-block;
+            animation: typing 4s steps(40, end) infinite alternate, blink 1.75s step-end infinite;
+        }
+
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+
+        @keyframes blink {
+            50% { border-color: transparent; }
+        }
+
+        /* Logo */
+        .logo {
+            display: block;
+            margin: 0 auto;
+            max-width: 200px;
+            height: auto;
+        }
+
+        /* Buttons */
+        .buttons button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #ff5722;
+            color: white;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .buttons button:hover {
+            background-color: #e64a19;
+        }
+
+        /* Top Logo */
+        .tlogo {
+            position: fixed;
+            top: 10px;
+            right: 20px;
+            width: 100px;
+            height: auto;
+            z-index: 1050;
+        }
+
+        /* Centered Image */
+        .center-image {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 80vh;
+        }
+
+        .align {
+            position: center;
+        }
+
+        .center-image img {
+            max-width: 60%;
+            height: auto;
+        }
+
+        /* Sidebar */
+        .offcanvas {
+            background-color: rgba(0, 0, 0, 0.8);
+            color: white;
+        }
+
+        .offcanvas-body a {
+            padding: 10px;
+            color: white;
+            text-decoration: none;
+            display: block;
+            transition: 0.3s;
+        }
+
+        .offcanvas-body a:hover {
+            background-color: #ff5722;
+        }
+
+        /* Sidebar Button */
+        .menu-btn {
+            position: fixed;
+            top: 15px;
+            left: 15px;
+            font-size: 40px;
+            background: transparent;
+            border: none;
+            color: white;
+            z-index: 1050;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Video Background -->
+    <div class="video-container">
+        <video autoplay muted loop>
+            <source src="background.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+    </div>
+
+    <div>
+        <!-- Overlay Content -->
+        <div class="overlay">
+            <div class="typewriter">
+                <h3>Join Us At KEC's Premier Technical Symposium</h3>
+            </div>
+            <div class="buttons">
+                <a href="events.html">
+                <button>REGISTER NOW</button>
+                </a>
+            </div>
+        </div>
+
+        <!-- Centered Image -->
+        <div class="center-image">
+            <img src="Font.png" alt="Centered Image">
+        </div>
+    </div>
+
+    <!-- Sidebar Toggle Button -->
+    <button class="btn menu-btn" type="button" data-bs-toggle="offcanvas" data-bs-target="#sidebar">
+        ☰
+    </button>
+
+    <!-- Offcanvas Sidebar -->
+    <div class="offcanvas offcanvas-start" tabindex="-1" id="sidebar">
+        <div class="offcanvas-header">
+            <h4><button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas"></button></h4>
+        </div>
+
+        <div class="offcanvas-body">
+            <h3><a href="home.html">Home</a></h3>
+            <h3><a href="events.html">Events & Workshop</a></h3>
+            <h3><a href="sponsors.html">Sponsors</a></h3>
+            <h3><a href="sponsors.html">About Us</a></h3>
+            <h3><a href="contact.html">Contact</a></h3>
+        </div>
+    </div>
+
+    <!-- JavaScript for Sidebar -->
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const menuButton = document.querySelector(".menu-btn");
+            const offCanvas = document.getElementById("sidebar");
+
+            offCanvas.addEventListener("show.bs.offcanvas", function () {
+                menuButton.style.display = "none"; // Hide button when menu opens
+            });
+
+            offCanvas.addEventListener("hidden.bs.offcanvas", function () {
+                menuButton.style.display = "block"; // Show button when menu closes
+            });
+        });
+    </script>
+
+</body>
+</html>
